@@ -1,0 +1,353 @@
+[gd_scene load_steps=29 format=3 uid="uid://cswrleimp5e5m"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Controls/MapControls.cs" id="1_spbq1"]
+[ext_resource type="Script" path="res://Scripts/UI/Map2d.cs" id="2_h4chj"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/TileSelector.cs" id="3_4ihun"]
+[ext_resource type="PackedScene" uid="uid://y48xksa3x6jn" path="res://Prefabs/resource.tscn" id="3_sav2s"]
+[ext_resource type="PackedScene" uid="uid://dlp7wufk2oqw6" path="res://Prefabs/landmark.tscn" id="4_gsmvy"]
+[ext_resource type="PackedScene" uid="uid://du2wfy37i2uh0" path="res://Prefabs/indicator.tscn" id="4_sygbc"]
+[ext_resource type="PackedScene" uid="uid://dmnygdo48kg12" path="res://Prefabs/character.tscn" id="5_0ag6y"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/PanelInteractions.cs" id="5_i64gx"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/Buttons/ClosePlanelBtn.cs" id="8_kuwyx"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/Buttons/ResourceHeaderBtn.cs" id="9_4eqot"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/Buttons/SavePanelBtn.cs" id="11_4dupl"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/Buttons/ResourceAddBtn.cs" id="11_swmdk"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/Buttons/SaveDataPathBtn.cs" id="12_7laej"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/Buttons/ResourceRemoveBtn.cs" id="12_018am"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_camoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfyhq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4uhk"]
+bg_color = Color(0.94902, 0.388235, 0.435294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cnud"]
+bg_color = Color(0.984314, 0.74902, 0.756863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_migfm"]
+bg_color = Color(0, 0.545098, 0.105882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukp7d"]
+bg_color = Color(0, 0.8, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qd5mk"]
+bg_color = Color(0.862745, 0, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaa4d"]
+bg_color = Color(1, 0.321569, 0.376471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwpxg"]
+bg_color = Color(0, 0.6, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s658b"]
+bg_color = Color(0, 0.792157, 0.172549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3f8q"]
+font_size = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om5od"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_claj3"]
+bg_color = Color(0.352941, 0.701961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4r8eb"]
+bg_color = Color(0.45098, 0.878431, 0, 1)
+
+[node name="2DProject" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map")]
+zoom = Vector2(100, 100)
+script = ExtResource("1_spbq1")
+map = NodePath("../Map")
+
+[node name="Map" type="MeshInstance2D" parent="." node_paths=PackedStringArray("tileSelector", "root", "SaveDataPath", "StartUpPanel")]
+scale = Vector2(100, 100)
+mesh = SubResource("QuadMesh_camoa")
+script = ExtResource("2_h4chj")
+tileSelector = NodePath("../TileSelector")
+root = NodePath("..")
+SaveDataPath = NodePath("../CanvasLayer/PanelContainer/StartUpPanel/SaveDataPathBtn")
+StartUpPanel = NodePath("../CanvasLayer/PanelContainer/StartUpPanel")
+resourceScene = ExtResource("3_sav2s")
+landmarkScene = ExtResource("4_gsmvy")
+characterScene = ExtResource("5_0ag6y")
+
+[node name="TileSelector" type="Node2D" parent="." node_paths=PackedStringArray("panel", "root")]
+script = ExtResource("3_4ihun")
+indicatorScene = ExtResource("4_sygbc")
+panel = NodePath("../CanvasLayer/PanelContainer/Panel")
+root = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="PanelContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PanelContainer" node_paths=PackedStringArray("tileSelector", "xCoordInput", "yCoordInput", "resourceHeaderBtn", "resourceAddBtn", "resourceRemoveBtn", "landmarkHeaderBtn", "characterHeaderBtn", "ResourceEditorContainer", "resourceIDInput", "regionTagInput", "abundanceDD")]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 30.0
+offset_right = 809.0
+offset_bottom = 1003.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfyhq")
+script = ExtResource("5_i64gx")
+tileSelector = NodePath("../../../TileSelector")
+xCoordInput = NodePath("Coordinates/XCoordInput")
+yCoordInput = NodePath("Coordinates/YCoordInput")
+resourceHeaderBtn = NodePath("CoreButtons/ResourceHeaderBtn")
+resourceAddBtn = NodePath("CoreButtons/ResourceAddBtn")
+resourceRemoveBtn = NodePath("CoreButtons/ResourceRemoveBtn")
+landmarkHeaderBtn = NodePath("CoreButtons/LandmarkHeaderBtn")
+characterHeaderBtn = NodePath("CoreButtons/CharacterHeaderBtn")
+ResourceEditorContainer = NodePath("ResourceEditor")
+resourceIDInput = NodePath("ResourceEditor/ResourceIDInput")
+regionTagInput = NodePath("ResourceEditor/RegionTagInput")
+abundanceDD = NodePath("ResourceEditor/AbundanceDD")
+
+[node name="CoreButtons" type="Control" parent="CanvasLayer/PanelContainer/Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ExitBtn" type="Button" parent="CanvasLayer/PanelContainer/Panel/CoreButtons" node_paths=PackedStringArray("panel")]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 17.0
+offset_right = 757.0
+offset_bottom = 48.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_v4uhk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7cnud")
+text = "X"
+script = ExtResource("8_kuwyx")
+panel = NodePath("../..")
+
+[node name="ResourceHeaderBtn" type="Button" parent="CanvasLayer/PanelContainer/Panel/CoreButtons" node_paths=PackedStringArray("ResourceEditor")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 17.0
+offset_right = 193.0
+offset_bottom = 56.0
+text = "Resources"
+script = ExtResource("9_4eqot")
+ResourceEditor = NodePath("../../ResourceEditor")
+
+[node name="ResourceAddBtn" type="Button" parent="CanvasLayer/PanelContainer/Panel/CoreButtons" node_paths=PackedStringArray("PanelInteractions", "map")]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 17.0
+offset_right = 193.0
+offset_bottom = 56.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_migfm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ukp7d")
+text = "Resources +"
+script = ExtResource("11_swmdk")
+PanelInteractions = NodePath("../..")
+map = NodePath("../../../../../Map")
+
+[node name="ResourceRemoveBtn" type="Button" parent="CanvasLayer/PanelContainer/Panel/CoreButtons" node_paths=PackedStringArray("PanelInteractions", "map")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 62.0
+offset_right = 193.0
+offset_bottom = 101.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qd5mk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yaa4d")
+text = "Resources -"
+script = ExtResource("12_018am")
+PanelInteractions = NodePath("../..")
+map = NodePath("../../../../../Map")
+
+[node name="LandmarkHeaderBtn" type="Button" parent="CanvasLayer/PanelContainer/Panel/CoreButtons"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 17.0
+offset_right = 344.0
+offset_bottom = 56.0
+text = "Landmarks"
+
+[node name="CharacterHeaderBtn" type="Button" parent="CanvasLayer/PanelContainer/Panel/CoreButtons"]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 17.0
+offset_right = 492.0
+offset_bottom = 56.0
+text = "Characters"
+
+[node name="SaveBtn" type="Button" parent="CanvasLayer/PanelContainer/Panel/CoreButtons" node_paths=PackedStringArray("panelInteractions", "map")]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 915.0
+offset_right = 756.0
+offset_bottom = 954.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_mwpxg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s658b")
+text = "Save"
+script = ExtResource("11_4dupl")
+panelInteractions = NodePath("../..")
+map = NodePath("../../../../../Map")
+
+[node name="Coordinates" type="Control" parent="CanvasLayer/PanelContainer/Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="YCoordLabel" type="Label" parent="CanvasLayer/PanelContainer/Panel/Coordinates"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 930.0
+offset_right = 40.0
+offset_bottom = 964.0
+text = "Y:"
+label_settings = SubResource("LabelSettings_m3f8q")
+
+[node name="YCoordInput" type="LineEdit" parent="CanvasLayer/PanelContainer/Panel/Coordinates"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 930.0
+offset_right = 107.063
+offset_bottom = 961.0
+
+[node name="XCoordLabel" type="Label" parent="CanvasLayer/PanelContainer/Panel/Coordinates"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 895.0
+offset_right = 40.0
+offset_bottom = 929.0
+text = "X:"
+label_settings = SubResource("LabelSettings_m3f8q")
+
+[node name="XCoordInput" type="LineEdit" parent="CanvasLayer/PanelContainer/Panel/Coordinates"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 895.0
+offset_right = 107.063
+offset_bottom = 926.0
+
+[node name="ResourceEditor" type="Control" parent="CanvasLayer/PanelContainer/Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResourceIDInput" type="LineEdit" parent="CanvasLayer/PanelContainer/Panel/ResourceEditor"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 135.0
+offset_right = 414.0
+offset_bottom = 166.0
+
+[node name="ResourceIDLabel" type="Label" parent="CanvasLayer/PanelContainer/Panel/ResourceEditor"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 135.0
+offset_right = 105.0
+offset_bottom = 166.0
+text = "Resource ID:"
+
+[node name="RegionTagInput" type="LineEdit" parent="CanvasLayer/PanelContainer/Panel/ResourceEditor"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 178.0
+offset_right = 414.0
+offset_bottom = 209.0
+
+[node name="RegionTagLabel" type="Label" parent="CanvasLayer/PanelContainer/Panel/ResourceEditor"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 178.0
+offset_right = 105.0
+offset_bottom = 209.0
+text = "Region Tag:"
+
+[node name="AbundanceLabel" type="Label" parent="CanvasLayer/PanelContainer/Panel/ResourceEditor"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 135.0
+offset_right = 589.0
+offset_bottom = 161.0
+text = "Abundance Level:"
+
+[node name="AbundanceDD" type="OptionButton" parent="CanvasLayer/PanelContainer/Panel/ResourceEditor"]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 135.0
+offset_right = 642.0
+offset_bottom = 166.0
+item_count = 4
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+popup/item_3/text = "4"
+popup/item_3/id = 3
+
+[node name="CharacterEditor" type="Control" parent="CanvasLayer/PanelContainer/Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LandmarkEditor" type="Control" parent="CanvasLayer/PanelContainer/Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartUpPanel" type="Panel" parent="CanvasLayer/PanelContainer"]
+visible = false
+layout_mode = 0
+offset_left = 497.0
+offset_top = 244.0
+offset_right = 1385.0
+offset_bottom = 713.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_om5od")
+
+[node name="DataFolderPathInput" type="LineEdit" parent="CanvasLayer/PanelContainer/StartUpPanel"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 120.0
+offset_right = 838.0
+offset_bottom = 151.0
+
+[node name="DataFolderPathLabel" type="Label" parent="CanvasLayer/PanelContainer/StartUpPanel"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 90.0
+offset_right = 838.0
+offset_bottom = 113.0
+text = "Data Folder Path"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveDataPathBtn" type="Button" parent="CanvasLayer/PanelContainer/StartUpPanel" node_paths=PackedStringArray("DataFolderPathInput", "validatorLabel", "StartUpPanel")]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 395.0
+offset_right = 501.0
+offset_bottom = 434.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_claj3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4r8eb")
+text = "Enter"
+script = ExtResource("12_7laej")
+DataFolderPathInput = NodePath("../DataFolderPathInput")
+validatorLabel = NodePath("../ValidatorLabel")
+StartUpPanel = NodePath("..")
+
+[node name="ValidatorLabel" type="Label" parent="CanvasLayer/PanelContainer/StartUpPanel"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 271.0
+offset_right = 838.0
+offset_bottom = 339.0
+theme_override_colors/font_color = Color(0.580392, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlp7wufk2oqw6"]
+
+[ext_resource type="Texture2D" uid="uid://2qkictum3ox5" path="res://Sprites/Landmarks/landmark.png" id="1_t54rv"]
+
+[node name="Landmark" type="Sprite2D"]
+scale = Vector2(0.009, 0.009)
+texture = ExtResource("1_t54rv")

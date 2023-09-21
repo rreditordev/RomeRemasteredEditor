@@ -1,0 +1,33 @@
+[gd_scene load_steps=26 format=3 uid="uid://y48xksa3x6jn"]
+
+[ext_resource type="Texture2D" uid="uid://bvfs4nio8xwqk" path="res://Sprites/Resources/resources.png" id="1_3f5cm"]
+[ext_resource type="Script" path="res://Scripts/UI/MapItems/Resource.cs" id="1_rv6v3"]
+[ext_resource type="Texture2D" uid="uid://bo2ccn50s4neq" path="res://Sprites/Resources/amber.png" id="3_7nhmv"]
+[ext_resource type="Texture2D" uid="uid://gqi6tx6dnm3e" path="res://Sprites/Resources/camels.png" id="4_e4e2f"]
+[ext_resource type="Texture2D" uid="uid://dyreybts8srp2" path="res://Sprites/Resources/copper.png" id="5_hb17k"]
+[ext_resource type="Texture2D" uid="uid://ccm73o2tv88k0" path="res://Sprites/Resources/elephants.png" id="6_6e6hs"]
+[ext_resource type="Texture2D" uid="uid://ct4risu7q2wc5" path="res://Sprites/Resources/glass.png" id="7_mj1l5"]
+[ext_resource type="Texture2D" uid="uid://dpbbxfqan5lt2" path="res://Sprites/Resources/gold.png" id="8_fsr26"]
+[ext_resource type="Texture2D" uid="uid://dsjk7w00jko3g" path="res://Sprites/Resources/grain.png" id="9_pq53l"]
+[ext_resource type="Texture2D" uid="uid://d1gb110q03rao" path="res://Sprites/Resources/hides.png" id="10_87n0d"]
+[ext_resource type="Texture2D" uid="uid://dxel0xuvdntkn" path="res://Sprites/Resources/incense.png" id="11_emo1v"]
+[ext_resource type="Texture2D" uid="uid://rmxm3bpyosth" path="res://Sprites/Resources/iron.png" id="12_wn5jo"]
+[ext_resource type="Texture2D" uid="uid://nnii1b8k3fmh" path="res://Sprites/Resources/lead.png" id="13_ibuw2"]
+[ext_resource type="Texture2D" uid="uid://d2nmjkvfomd7v" path="res://Sprites/Resources/marble.png" id="14_gldf7"]
+[ext_resource type="Texture2D" uid="uid://bw4xlp2i3kxoo" path="res://Sprites/Resources/olive_oil.png" id="15_q4mf8"]
+[ext_resource type="Texture2D" uid="uid://cc6waqp2kbukp" path="res://Sprites/Resources/pigs.png" id="16_d6fha"]
+[ext_resource type="Texture2D" uid="uid://d4agjnp20deib" path="res://Sprites/Resources/pottery.png" id="17_ou1n4"]
+[ext_resource type="Texture2D" uid="uid://ct8qjan54tr56" path="res://Sprites/Resources/purple_dye.png" id="18_s1e0n"]
+[ext_resource type="Texture2D" uid="uid://cglchssen33c4" path="res://Sprites/Resources/silk.png" id="19_4soqv"]
+[ext_resource type="Texture2D" uid="uid://b8m2w2uvqpdde" path="res://Sprites/Resources/silver.png" id="20_lrpu0"]
+[ext_resource type="Texture2D" uid="uid://bcr6datmj5tpx" path="res://Sprites/Resources/slaves.png" id="21_skikd"]
+[ext_resource type="Texture2D" uid="uid://nnjtvwnxjds2" path="res://Sprites/Resources/textiles.png" id="22_hhig5"]
+[ext_resource type="Texture2D" uid="uid://ccxppoxkp44wh" path="res://Sprites/Resources/timber.png" id="23_oacvd"]
+[ext_resource type="Texture2D" uid="uid://doxxyyo1kyxf7" path="res://Sprites/Resources/tin.png" id="24_6cmjn"]
+[ext_resource type="Texture2D" uid="uid://b3klrm2gbc138" path="res://Sprites/Resources/wild_animals.png" id="25_0rlea"]
+
+[node name="Resource" type="Sprite2D"]
+scale = Vector2(0.009, 0.009)
+texture = ExtResource("1_3f5cm")
+script = ExtResource("1_rv6v3")
+resTexArray = Array[Texture2D]([ExtResource("3_7nhmv"), ExtResource("4_e4e2f"), ExtResource("5_hb17k"), ExtResource("6_6e6hs"), ExtResource("7_mj1l5"), ExtResource("8_fsr26"), ExtResource("9_pq53l"), ExtResource("10_87n0d"), ExtResource("11_emo1v"), ExtResource("12_wn5jo"), ExtResource("13_ibuw2"), ExtResource("14_gldf7"), ExtResource("15_q4mf8"), ExtResource("16_d6fha"), ExtResource("17_ou1n4"), ExtResource("18_s1e0n"), ExtResource("19_4soqv"), ExtResource("20_lrpu0"), ExtResource("21_skikd"), ExtResource("22_hhig5"), ExtResource("23_oacvd"), ExtResource("24_6cmjn"), ExtResource("25_0rlea")])

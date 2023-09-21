@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://du2wfy37i2uh0"]
+
+[ext_resource type="Texture2D" uid="uid://f6e12g78uatx" path="res://Sprites/Controls/indicator.png" id="1_kgggs"]
+[ext_resource type="Script" path="res://Scripts/Animations/IndicatorAnim.cs" id="2_ki7xh"]
+
+[sub_resource type="Animation" id="Animation_x48qn"]
+resource_name = "Blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gvmga"]
+_data = {
+"Blink": SubResource("Animation_x48qn")
+}
+
+[node name="Indicator" type="Sprite2D"]
+scale = Vector2(0.018, 0.018)
+texture = ExtResource("1_kgggs")
+hframes = 2
+script = ExtResource("2_ki7xh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gvmga")
+}

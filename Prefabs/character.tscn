@@ -1,0 +1,17 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmnygdo48kg12"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MapItems/character.cs" id="1_1vkps"]
+[ext_resource type="Texture2D" uid="uid://by3kkc3akdxh7" path="res://Sprites/Characters/characters.png" id="1_uyfg6"]
+[ext_resource type="Texture2D" uid="uid://dndt2dwomv5nv" path="res://Sprites/Characters/Admiral.png" id="2_7ndeb"]
+[ext_resource type="Texture2D" uid="uid://drgufhpej66t0" path="res://Sprites/Characters/Diplomat.png" id="3_ucnkq"]
+[ext_resource type="Texture2D" uid="uid://qxlq73tby2d3" path="res://Sprites/Characters/General.png" id="4_lx51r"]
+[ext_resource type="Texture2D" uid="uid://brqen8fc07t2j" path="res://Sprites/Characters/NamedCharacter.png" id="5_bwdn5"]
+[ext_resource type="Texture2D" uid="uid://dp7y0vwt4bled" path="res://Sprites/Characters/Merchant.png" id="7_dh016"]
+[ext_resource type="Texture2D" uid="uid://blj8cbp00w6s3" path="res://Sprites/Characters/Spy.png" id="8_s0c36"]
+[ext_resource type="Texture2D" uid="uid://bep16gjx5ugi8" path="res://Sprites/Characters/Assassin.png" id="9_quy2o"]
+
+[node name="character" type="Sprite2D"]
+scale = Vector2(0.009, 0.009)
+texture = ExtResource("1_uyfg6")
+script = ExtResource("1_1vkps")
+resTexArray = Array[Texture2D]([ExtResource("2_7ndeb"), ExtResource("3_ucnkq"), ExtResource("4_lx51r"), ExtResource("5_bwdn5"), ExtResource("7_dh016"), ExtResource("8_s0c36"), ExtResource("9_quy2o")])
